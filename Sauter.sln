@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sauter.Features", "Sauter.Features\Sauter.Features.csproj", "{C4603C90-3B0D-481A-97A8-A7CA9E144091}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sauter.InventoryManagement", "Sauter.InventoryManagement\Sauter.InventoryManagement.csproj", "{4F1AC308-FF4F-41F4-93F4-7C1D9D29990B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{C4603C90-3B0D-481A-97A8-A7CA9E144091}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4603C90-3B0D-481A-97A8-A7CA9E144091}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4603C90-3B0D-481A-97A8-A7CA9E144091}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F1AC308-FF4F-41F4-93F4-7C1D9D29990B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F1AC308-FF4F-41F4-93F4-7C1D9D29990B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F1AC308-FF4F-41F4-93F4-7C1D9D29990B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F1AC308-FF4F-41F4-93F4-7C1D9D29990B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

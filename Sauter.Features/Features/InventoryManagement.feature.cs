@@ -81,16 +81,16 @@ namespace Sauter.Features.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Add two numbers")]
+        [Xunit.SkippableFactAttribute(DisplayName="Add New Item To Inventory")]
         [Xunit.TraitAttribute("FeatureTitle", "Inventory Management")]
-        [Xunit.TraitAttribute("Description", "Add two numbers")]
+        [Xunit.TraitAttribute("Description", "Add New Item To Inventory")]
         [Xunit.TraitAttribute("Category", "mytag")]
-        public virtual void AddTwoNumbers()
+        public virtual void AddNewItemToInventory()
         {
             string[] tagsOfScenario = new string[] {
                     "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add New Item To Inventory", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -112,16 +112,92 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 6
- testRunner.Given("the first number is 50", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("Inputting an item with Name Plastic Cup Quantity 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
- testRunner.And("the second number is 70", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("The system records it", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 8
- testRunner.When("the two numbers are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Increase Item Quantity In Inventory")]
+        [Xunit.TraitAttribute("FeatureTitle", "Inventory Management")]
+        [Xunit.TraitAttribute("Description", "Increase Item Quantity In Inventory")]
+        public virtual void IncreaseItemQuantityInInventory()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Increase Item Quantity In Inventory", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 9
- testRunner.Then("the result should be 120", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 10
+ testRunner.Given("An item with Name Plastic Cup and Quantity 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 11
+ testRunner.When("Item is incremented by 4", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 12
+ testRunner.Then("The quantity of the item equals 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Decrease Item Quantity In Inventory")]
+        [Xunit.TraitAttribute("FeatureTitle", "Inventory Management")]
+        [Xunit.TraitAttribute("Description", "Decrease Item Quantity In Inventory")]
+        public virtual void DecreaseItemQuantityInInventory()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Decrease Item Quantity In Inventory", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 14
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 15
+ testRunner.Given("An item with Name Plastic Cup and Quantity 10", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 16
+ testRunner.When("Item is decremented by 4", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 17
+ testRunner.Then("The quantity of the item equals 6", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
