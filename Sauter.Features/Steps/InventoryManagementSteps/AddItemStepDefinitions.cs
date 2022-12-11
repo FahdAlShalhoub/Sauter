@@ -22,10 +22,18 @@ public sealed class AddItemStepDefinitions
     public void ThenTheSystemRecordsIt()
     {
         ItemDto recordedItem =
-            InventoryManagement.InventoryManagement.GetItem(_itemIdentifier!);
+            InventoryManagement.InventoryManagement.GetItemById(_itemIdentifier!);
         
         recordedItem.Id.Should().Be(_itemIdentifier);
         recordedItem.Name.Should().Be(_itemName);
         recordedItem.Quantity.Should().Be(_quantity);
+    }
+
+    [Then(@"StoreItem action should be logged")]
+    public void ThenTheActionShouldBeLogged()
+    {
+        InventoryManagement.InventoryManagement.GetAuditLogs()
+            .Should()
+            .ContainSingle(log => log.Action == $"Action StoreItem Was Committed With Input {_itemName} - {_quantity}");
     }
 }
