@@ -1,24 +1,26 @@
-namespace Sauter.InventoryManagement;
+using System.Reflection;
 
-public class AuditLogger
+namespace Sauter.AuditLog;
+
+internal class AuditLogger
 {
-    private static AuditLogger? instance;
+    private static AuditLogger? _instance;
     internal List<AuditLog> Logs { get; }
-    
-    private static readonly object padlock = new();
+
+    private static readonly object Padlock = new();
 
     AuditLogger()
     {
         Logs = new List<AuditLog>();
     }
-    
-    public static AuditLogger Instance
+
+    internal static AuditLogger Instance
     {
         get
         {
-            lock (padlock)
+            lock (Padlock)
             {
-                return instance ??= new AuditLogger();
+                return _instance ??= new AuditLogger();
             }
         }
     }
@@ -28,6 +30,12 @@ internal class AuditLog
 {
     public string Action { get; set; }
     public DateTime DateOfOccurence { get; set; }
+
+    internal AuditLogDto ToDto => new()
+    {
+        Action = Action,
+        DateOfOccurence = DateOfOccurence
+    };
 }
 
 public struct AuditLogDto

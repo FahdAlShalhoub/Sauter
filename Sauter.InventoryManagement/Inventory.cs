@@ -2,10 +2,10 @@ namespace Sauter.InventoryManagement;
 
 internal class Inventory
 {
-    private static Inventory? instance;
+    private static Inventory? _instance;
     internal Dictionary<Guid, Item> Items { get; }
 
-    private static readonly object padlock = new();
+    private static readonly object Padlock = new();
 
     Inventory()
     {
@@ -16,9 +16,9 @@ internal class Inventory
     {
         get
         {
-            lock (padlock)
+            lock (Padlock)
             {
-                return instance ??= new Inventory();
+                return _instance ??= new Inventory();
             }
         }
     }
@@ -26,11 +26,18 @@ internal class Inventory
 
 internal class Item
 {
-    public Guid Id { get; set; }
-    public string Name { get; set; } 
+    public Guid Id { get; init; }
+    public string Name { get; init; }
     public int Quantity { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
+
+    internal ItemDto ToDto => new()
+    {
+        Id = Id,
+        Name = Name,
+        Quantity = Quantity
+    };
 }
 
 public struct ItemDto

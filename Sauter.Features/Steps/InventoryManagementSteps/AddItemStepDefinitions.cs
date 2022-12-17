@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Sauter.AuditLog;
 using Sauter.InventoryManagement;
 
 namespace Sauter.Features.Steps.InventoryManagementSteps;
@@ -15,25 +16,26 @@ public sealed class AddItemStepDefinitions
     {
         _itemName = itemName;
         _quantity = quantity;
-        _itemIdentifier = InventoryManagement.InventoryManagement.StoreItem(itemName, quantity);
+        _itemIdentifier = InventoryManagementActions.StoreItem(itemName, quantity);
     }
     
     [Then(@"The system records it")]
     public void ThenTheSystemRecordsIt()
     {
         ItemDto recordedItem =
-            InventoryManagement.InventoryManagement.GetItemById(_itemIdentifier!);
+            InventoryManagementActions.GetItemById(_itemIdentifier!);
         
         recordedItem.Id.Should().Be(_itemIdentifier);
         recordedItem.Name.Should().Be(_itemName);
         recordedItem.Quantity.Should().Be(_quantity);
     }
 
-    [Then(@"StoreItem action should be logged")]
-    public void ThenTheActionShouldBeLogged()
+    [Then(@"(.*) action should be logged")]
+    [Scope(Tag = "StoreItem")]
+    public void ThenTheActionShouldBeLogged(string actionName)
     {
-        InventoryManagement.InventoryManagement.GetAuditLogs()
+        AuditLogActions.GetAuditLogs()
             .Should()
-            .ContainSingle(log => log.Action == $"Action StoreItem Was Committed With Input {_itemName} - {_quantity}");
+            .ContainSingle(log => log.Action == $"Action {actionName} Was Committed With Input {_itemName} - {_quantity}");
     }
 }

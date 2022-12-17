@@ -11,7 +11,7 @@ public class SearchItemStepDefinitions
     [When(@"Searching for (.*)")]
     public void WhenSearchingFor(string searchTerm)
     {
-        _searchResults = InventoryManagement.InventoryManagement.SearchItemByName(searchTerm);
+        _searchResults = InventoryManagementActions.SearchItemByName(searchTerm);
     }
 
     [Then(@"The result contain (.*)")]

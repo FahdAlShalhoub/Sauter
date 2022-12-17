@@ -1,4 +1,7 @@
 
+using Sauter.AuditLog;
+using Sauter.InventoryManagement;
+
 namespace Sauter.Features.Hooks
 {
     [Binding]
@@ -7,7 +10,8 @@ namespace Sauter.Features.Hooks
         [BeforeScenario]
         public void SetupInventoryManagement()
         {
-            InventoryManagement.InventoryManagement.Reset();
+            InventoryManagementActions.Reset();
+            AuditLogActions.Reset();
         }
     }
 }

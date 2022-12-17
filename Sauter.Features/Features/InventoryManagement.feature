@@ -1,7 +1,6 @@
 ﻿Feature: Inventory Management
 A comprehensive Inventory Management Sub-Module for managing physical assets within the enterprise. 
 
-@mytag
 Scenario: Add New Item To Inventory 
 	When Inputting an item with Name Plastic Cup Quantity 2 
 	Then The system records it
@@ -23,7 +22,8 @@ Scenario: Search Item By Name
 	When Searching for Cup
 	Then The result contain Paper Cup
 	And The result contain Plastic Cup
-	
+
+@StoreItem	
 Scenario: Record StoreItem Audit Log
 	When Inputting an item with Name Plastic Cup Quantity 2 
 	Then StoreItem action should be logged
@@ -31,9 +31,9 @@ Scenario: Record StoreItem Audit Log
 Scenario: Record IncreaseItem AuditLog 
 	Given An item with Name Plastic Cup and Quantity 1 
 	When Item is incremented by 4
-	Then IncreaseItem action should be logged
+	Then IncrementItem action should be logged
 
 Scenario: Record DecreaseItem AuditLog 
 	Given An item with Name Plastic Cup and Quantity 1 
 	When Item is decremented by 4
-	Then DecreaseItem action should be logged
+	Then DecrementItem action should be logged
