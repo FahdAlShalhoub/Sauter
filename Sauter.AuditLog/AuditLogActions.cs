@@ -2,7 +2,7 @@ using System.Reflection;
 
 namespace Sauter.AuditLog;
 
-public class AuditLogActions
+public static class AuditLogActions
 {
     public static void Log(MethodBase method, IEnumerable<object> arguments)
     {
